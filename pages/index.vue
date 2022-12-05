@@ -19,9 +19,9 @@
 			<div class="row">
 
 
-				<div class="logo">BitExchange</div>
+				<div class="logo">CryptoSwap.cz</div>
 				<div class="description">
-					<p>BitExchange - это надежный сервис, который своевременно и в полном объеме выполнит взятые на себя обязательства по конвертации ваших средств. На нашем ресурсе вы можете обменять биткойны и другие цифровые валюты по максимально выгодному курсу.</p>
+					<p>CryptoSwap.cz - это надежный сервис, который своевременно и в полном объеме выполнит взятые на себя обязательства по конвертации ваших средств. На нашем ресурсе вы можете обменять биткойны и другие цифровые валюты по максимально выгодному курсу.</p>
 					<p>Для начала обмена выберите валюту, которую хотите обменять, и валюту, которую хотите получить.</p>
 				</div>
 
@@ -111,10 +111,10 @@
 
 				<div class="footer">
 					<div class="footer__description">
-						<p>По всем вопросам вы можете связаться с нами в <a href="https://t.me/" class="footer__link">Telegram</a></p>
+						<p>По всем вопросам вы можете связаться с нами в <a href="https://t.me/vaaxooo" class="footer__link">Telegram</a></p>
 					</div>
 					<div class="d-flex">
-						<div class="copyright">&copy; 2019-2022 BitExchange</div>
+						<div class="copyright">CryptoSwap.cz &copy; 2019-2022 All rights reserved</div>
 						<a href="/terms" class="footer__link mx-5">Пользовательское соглашение</a>
 					</div>
 				</div>

@@ -2,9 +2,9 @@
 		<div class="row">
 			<div class="col-md-12">
 
-				<div class="logo">BitExchange</div>
+				<div class="logo">CryptoSwap.cz</div>
 				<div class="logo-text">
-					<p>BitExchange - это платформа для обмена криптовалют, которая позволяет с легкостью торговать вашими любимыми монетами.</p>
+					<p>CryptoSwap.cz - это платформа для обмена криптовалют, которая позволяет с легкостью торговать вашими любимыми монетами.</p>
 				</div>
 
 				<div class="mobile-crypto-item">
@@ -91,11 +91,11 @@
 
 				<div class="footer">
 					<div class="footer_links">
-						<a href="#">Телеграм</a>
+						<a href="https://t.me/vaaxooo">Телеграм</a>
 						<a href="/terms">Пользовательское соглашение</a>
 					</div>
 					<div class="footer_text">
-						<p>© 2019-2022 BitExchange. Все права защищены.</p>
+						<p>CryptoSwap.cz © 2019-2022 All rights reserved.</p>
 					</div>
 				</div>
 

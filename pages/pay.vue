@@ -1,7 +1,7 @@
 <template>
 	<div class="row pay-mt-5">
 		<div class="centered">
-			<h2 class="container-title text-center mb-3">BitExchange</h2>
+			<h2 class="container-title text-center mb-3">CryptoSwap.cz</h2>
 			<div class="exchange-block-info" v-if="transaction && Object.keys(transaction).length > 0">
 				<div class="row">
 					<div class="col-md-12 d-flex">
@@ -40,7 +40,7 @@
 			</div>
 			<div class="copy text-center mt-3">
 				<div class="copy-links">
-					<div class="copy-text">© 2021 BitExchange. All rights reserved.</div>
+					<div class="copy-text"> CryptoSwap.cz © 2019-2022 All rights reserved.</div>
 				</div>
 			</div>
 		</div>

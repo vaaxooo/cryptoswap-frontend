@@ -4,14 +4,15 @@ export default {
 
     // Global page headers: https://go.nuxtjs.dev/config-head
     head: {
-        title: 'exchange',
+        title: 'CryptoSwap.cz - Cryptocurrency exchange',
         htmlAttrs: {
             lang: 'en'
         },
         meta: [
             { charset: 'utf-8' },
             { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-            { hid: 'description', name: 'description', content: '' },
+            { hid: 'keywords', name: 'keywords', content: 'crypto, swap, cryptoswap, exchange' },
+            { hid: 'description', name: 'description', content: 'A reliable service that will fulfill its obligations to convert your funds in a timely and complete manner. On our resource you can exchange bitcoins and other digital currencies at the most favorable exchange rate.' },
             { name: 'format-detection', content: 'telephone=yes' }
         ],
         link: [
