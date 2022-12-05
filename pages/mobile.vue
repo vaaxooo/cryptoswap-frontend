@@ -59,7 +59,7 @@
 						<div class="exchange-form__item">
 							<div class="exchange-form__input">
 								<label>{{ $t('label_email') }}</label>
-								<input type="text" :placeholder="$t('label_email_placeholder')" class="form-control input" v-model="email">
+								<input type="email" :placeholder="$t('label_email_placeholder')" class="form-control input" v-model="email">
 							</div>
 						</div>
 
