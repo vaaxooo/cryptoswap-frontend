@@ -95,6 +95,13 @@
 						<a href="https://t.me/vaaxooo">Telegram</a>
 						<a href="/terms">{{ $t('user_agreement') }}</a>
 					</div>
+
+					<div class="footer__languages mt-5 mb-5">
+						<nuxt-link class="language" v-for="locale in availableLocales" :key="locale.code" :to="switchLocalePath(locale.code)">
+							{{ locale.name }}
+						</nuxt-link>
+					</div>
+
 					<div class="footer_text">
 						<p>CryptoSwap.cz © 2019-2022 {{ $t('all_rights_reserved') }}</p>
 					</div>
@@ -168,6 +175,11 @@ export default {
 			search: ''
 		}
   	},
+	computed: {
+		availableLocales () {
+			return this.$i18n.locales.filter(i => i.code !== this.$i18n.locale)
+		}
+	},
 	async mounted() {
 		if (!this.$mobileDetect.mobile()) {
 			let path = '/'
