@@ -16,7 +16,7 @@ export default {
             { name: 'format-detection', content: 'telephone=yes' }
         ],
         link: [
-            { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
+            { rel: 'icon', type: 'image/x-icon', href: '/favicon.jpg' },
             { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css' },
             { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap' },
             { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap' },
