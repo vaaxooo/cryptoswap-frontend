@@ -254,7 +254,11 @@ export default {
 				ref: localStorage.getItem('ref') || null
 			})).data
 			if(response.status === 'success') {
-				this.$router.push('/pay/' + response.data.hash)
+				let path = '/pay/' + response.data.hash
+				if(this.$i18n.locale !== 'ru') {
+					path = `/${this.$i18n.locale}${path}`
+				}
+				this.$router.push(path)
 			} else {
 				console.log('error')
 			}
