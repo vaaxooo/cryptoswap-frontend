@@ -16,6 +16,7 @@ export default {
             { name: 'format-detection', content: 'telephone=yes' }
         ],
         link: [
+            { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
             { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css' },
             { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap' },
             { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap' },
@@ -46,7 +47,22 @@ export default {
     modules: [
         "@nuxtjs/axios",
         "nuxt-mobile", ['@nuxtjs/dotenv', { systemvars: true }, ],
+        "@nuxtjs/i18n"
     ],
+
+    i18n: {
+        locales: [
+            { code: 'en', iso: 'en-US', file: 'en.js', name: 'English' },
+            { code: 'ru', iso: 'ru-RU', file: 'ru.js', name: 'Русский' },
+            { code: 'cz', iso: 'cz-CZ', file: 'cz.js', name: 'Čeština' },
+        ],
+        lazy: true,
+        langDir: 'lang/',
+        defaultLocale: 'ru',
+        vueI18n: {
+            fallbackLocale: 'ru',
+        },
+    },
 
     axios: {
         baseURL: process.env.API,

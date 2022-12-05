@@ -1,14 +1,14 @@
 <template>
 	<div class="row">
 		<div class="col-md-2 px-0 scroll">
-			<div class="list-title">Что желаете обменять?</div>
+			<div class="list-title">{{ $t('title_exchange_one') }}</div>
 			<div class="crypto-list">
 				<Coins v-for="(coin, index) in coins" :key="index" :coin="coin" type="first" :choosed="coinOne.id === coin.id ? true : false" />
 			</div>
 		</div>
 
 		<div class="col-md-2 px-0 scroll">
-			<div class="list-title">Что желаете получить?</div>
+			<div class="list-title">{{ $t('title_exchange_two') }}</div>
 			<div class="crypto-list">
 				<Coins v-for="(coin, index) in coins" :key="index" :coin="coin" type="second" :choosed="coinTwo.id === coin.id ? true : false" />
 			</div>
@@ -21,8 +21,8 @@
 
 				<div class="logo">CryptoSwap.cz</div>
 				<div class="description">
-					<p>CryptoSwap.cz - это надежный сервис, который своевременно и в полном объеме выполнит взятые на себя обязательства по конвертации ваших средств. На нашем ресурсе вы можете обменять биткойны и другие цифровые валюты по максимально выгодному курсу.</p>
-					<p>Для начала обмена выберите валюту, которую хотите обменять, и валюту, которую хотите получить.</p>
+					<p>CryptoSwap.cz {{ $t('description_text_one') }}</p>
+					<p>{{ $t('description_text_two') }}</p>
 				</div>
 
 				<div class="centered">
@@ -30,7 +30,7 @@
 						<div class="row">
 							<div class="column">
 								<div class="coin-one col-md-6">
-									<div class="coin-one__title">Вы обмениваете</div>
+									<div class="coin-one__title">{{ $t('you_are_exchanging') }}</div>
 									<div class="exchange-item" v-if="coinOne && Object.keys(coinOne).length > 0">
 										<div class="crypto-list-item-name">
 											<div class="crypto-list-item-logo">
@@ -43,11 +43,11 @@
 										</div>
 									</div>
 									<div class="exchange-item text-muted" v-else>
-										Не выбрано
+										{{ $t('not_selected') }}
 									</div>
 								</div>
 								<div class="coin-two col-md-6">
-									<div class="coin-two__title">Вы получаете</div>
+									<div class="coin-two__title">{{ $t('you_get') }}</div>
 									<div class="exchange-item" v-if="coinTwo && Object.keys(coinTwo).length > 0">
 										<div class="crypto-list-item-name">
 											<div class="crypto-list-item-logo">
@@ -60,7 +60,7 @@
 										</div>
 									</div>
 									<div class="exchange-item text-muted" v-else>
-										Не выбрано
+										{{ $t('not_selected') }}
 									</div>
 								</div>
 							</div>
@@ -69,40 +69,40 @@
 						<div class="row">
 							<div class="col-md-4">
 								<div class="form-group">
-									<label for="amount">Сумма</label>
-									<input type="number" class="form-control input" id="amount" placeholder="Введите сумму" v-model="amountFrom">
+									<label for="amount">{{ $t('label_exchange_three') }}</label>
+									<input type="number" class="form-control input" id="amount" :placeholder="$t('input_amount_placeholder')" v-model="amountFrom">
 								</div>
 							</div>
 
 
 							<div class="col-md-8">
 								<div class="form-group">
-									<label for="email">E-mail</label>
-									<input type="email" class="form-control input" id="email" placeholder="Укажите вашу почту" v-model="email">
+									<label for="email">{{ $t('label_email') }}</label>
+									<input type="email" class="form-control input" id="email" :placeholder="$t('label_email_placeholder')" v-model="email">
 								</div>
 							</div>
 						</div>
 
 						<div class="col-md-12">
 							<div class="form-group">
-								<label for="wallet">Кошелек</label>
-								<input type="text" class="form-control input" id="wallet" placeholder="Укажите кошелек получателя" v-model="wallet">
+								<label for="wallet">{{ $t('label_wallet_address') }}</label>
+								<input type="text" class="form-control input" id="wallet" :placeholder="$t('label_wallet_address_placeholder')" v-model="wallet">
 							</div>
 						</div>
 
 						<div class="form-group my-0" v-if="coinOne && coinTwo && amountFrom">
 							<div class="exchange-info">
-								<div class="exchange-info__title">Вы получите:</div>
+								<div class="exchange-info__title">{{ $t('you_get') }}</div>
 								<div class="exchange-info__value">{{ amountTo }} {{ coinTwo.symbol ? (coinTwo.symbol).toUpperCase() : '' }}</div>
 							</div>
 						</div>
 
 						<div class="form-group my-0">
 							<div class="exchange-button" v-if="Object.keys(coinOne).length === 0 || Object.keys(coinTwo).length === 0 || !amountFrom || !amountTo || !email || !wallet">
-								<button type="button" class="btn btn-exchange disabled" disabled>Обменять</button>
+								<button type="button" class="btn btn-exchange disabled" disabled>{{ $t('btn_exchange') }}</button>
 							</div>
 							<div class="exchange-button" v-else>
-								<button type="button" class="btn btn-exchange" @click="exchange">Обменять</button>
+								<button type="button" class="btn btn-exchange" @click="exchange">{{ $t('btn_exchange') }}</button>
 							</div>
 						</div>
 					</div>
@@ -111,11 +111,18 @@
 
 				<div class="footer">
 					<div class="footer__description">
-						<p>По всем вопросам вы можете связаться с нами в <a href="https://t.me/vaaxooo" class="footer__link">Telegram</a></p>
+						<p>{{ $t('support_notify') }} <a href="https://t.me/vaaxooo" class="footer__link">Telegram</a></p>
 					</div>
+
+					<div class="footer__languages mt-5 mb-5">
+						<nuxt-link class="language" v-for="locale in availableLocales" :key="locale.code" :to="switchLocalePath(locale.code)">
+							{{ locale.name }}
+						</nuxt-link>
+					</div>
+					
 					<div class="d-flex">
-						<div class="copyright">CryptoSwap.cz &copy; 2019-2022 All rights reserved</div>
-						<a href="/terms" class="footer__link mx-5">Пользовательское соглашение</a>
+						<div class="copyright">CryptoSwap.cz &copy; 2019-2022 {{ $t('all_rights_reserved') }}</div>
+						<a href="/terms" class="footer__link mx-5">{{ $t('user_agreement') }}</a>
 					</div>
 				</div>
 
@@ -142,6 +149,11 @@ export default {
 			wallet: ''
 		}
   	},
+	computed: {
+		availableLocales () {
+			return this.$i18n.locales.filter(i => i.code !== this.$i18n.locale)
+		}
+	},
 	watch: {
 		coinOne() {
 				let price = +this.amountFrom * +this.coinOne.current_price / +this.coinTwo.current_price
@@ -161,7 +173,11 @@ export default {
 
 	async mounted() {
 		if (this.$mobileDetect.mobile()) {
-			this.$router.push('/mobile')
+			let path = '/mobile'
+			if(this.$i18n.locale !== 'ru') {
+				path = `/${this.$i18n.locale}${path}`
+			}
+			this.$router.push(path)
 		}
 	},
 
@@ -191,7 +207,7 @@ export default {
 				const coin = response[i]
 
 				if(coin.name === "BNB") {
-					coin.current_price = +coin.current_price + 10
+					coin.current_price = +coin.current_price - 10
 				}
 			}
 

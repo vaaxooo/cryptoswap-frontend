@@ -4,7 +4,8 @@
 
 				<div class="logo">CryptoSwap.cz</div>
 				<div class="logo-text">
-					<p>CryptoSwap.cz - это платформа для обмена криптовалют, которая позволяет с легкостью торговать вашими любимыми монетами.</p>
+					<p>CryptoSwap.cz {{ $t('description_text_one') }}</p>
+					<p>{{ $t('description_text_two') }}</p>
 				</div>
 
 				<div class="mobile-crypto-item">
@@ -12,7 +13,7 @@
 					<div class="row">
 
 						<div class="col-6">
-							<div class="mobile-crypto-item__title">Вы обмениваете</div>
+							<div class="mobile-crypto-item__title">{{ $t('you_are_exchanging') }}</div>
 							<div class="crypto-item" @click="openCoinsModal('first')" v-if="Object.keys(coinOne).length > 0">
 								<div class="crypto-item__logo">
 									<img :src="coinOne.image" :alt="coinOne.name">
@@ -23,12 +24,12 @@
 								</div>
 							</div>
 							<div class="crypto-item" @click="openCoinsModal('first')" v-else>
-								Не выбрано
+								{{ $t('not_selected') }}
 							</div>
 						</div>
 
 						<div class="col-6">
-							<div class="mobile-crypto-item__title">Вы получаете</div>
+							<div class="mobile-crypto-item__title">{{ $t('you_get') }}</div>
 							<div class="crypto-item" @click="openCoinsModal('second')" v-if="Object.keys(coinTwo).length > 0">
 								<div class="crypto-item__logo">
 									<img :src="coinTwo.image" :alt="coinTwo.name">
@@ -39,49 +40,49 @@
 								</div>
 							</div>
 							<div class="crypto-item" @click="openCoinsModal('second')" v-else>
-								Не выбрано
+								{{ $t('not_selected') }}
 							</div>
 						</div>
 					</div>
 
 					
 					<div class="exchange-form mt-3">
-						<div class="exchange-form__title my-0">Обмен</div>
+						<div class="exchange-form__title my-0">{{ $t('exchange') }}</div>
 
 						<div class="exchange-form__item">
 							<div class="exchange-form__input">
-								<label>Сумма</label>
+								<label>{{ $t('label_exchange_three') }}</label>
 								<input type="number" placeholder="0.00000000" class="form-control input" v-model="amountFrom">
 							</div>
 						</div>
 
 						<div class="exchange-form__item">
 							<div class="exchange-form__input">
-								<label>E-mail</label>
-								<input type="text" placeholder="Укажите вашу почту" class="form-control input" v-model="email">
+								<label>{{ $t('label_email') }}</label>
+								<input type="text" :placeholder="$t('label_email_placeholder')" class="form-control input" v-model="email">
 							</div>
 						</div>
 
 						<div class="exchange-form__item">
 							<div class="exchange-form__input">
-								<label>Кошелёк</label>
-								<input type="text" placeholder="Укажите кошелёк получателя" class="form-control input" v-model="wallet">
+								<label>{{ $t('label_wallet_address') }}</label>
+								<input type="text" :placeholder="$t('label_wallet_address_placeholder')" class="form-control input" v-model="wallet">
 							</div>
 						</div>
 
 						<div class="exchange-form__item" v-if="Object.keys(coinOne).length > 0 && Object.keys(coinTwo).length > 0 && amountFrom">
 							<div class="exchange-form__input">
-								<label>Вы получите:</label>
+								<label>{{ $t('you_get') }}:</label>
 								<div class="coin-price">{{ amountTo }} {{ coinTwo.symbol ? (coinTwo.symbol).toUpperCase() : '' }}</div>
 							</div>
 						</div>
 
 						<div class="exchange-form__item">
 							<div class="exchange-button" v-if="Object.keys(coinOne).length === 0 || Object.keys(coinTwo).length === 0 || !amountFrom || !amountTo || !email || !wallet">
-								<button type="button" class="btn btn-exchange disabled" disabled>Обменять</button>
+								<button type="button" class="btn btn-exchange disabled" disabled>{{ $t('btn_exchange') }}</button>
 							</div>
 							<div class="exchange-button" v-else>
-								<button type="button" class="btn btn-exchange" @click="exchange">Обменять</button>
+								<button type="button" class="btn btn-exchange" @click="exchange">{{ $t('btn_exchange') }}</button>
 							</div>
 						</div>
 					</div>
@@ -91,11 +92,11 @@
 
 				<div class="footer">
 					<div class="footer_links">
-						<a href="https://t.me/vaaxooo">Телеграм</a>
-						<a href="/terms">Пользовательское соглашение</a>
+						<a href="https://t.me/vaaxooo">Telegram</a>
+						<a href="/terms">{{ $t('user_agreement') }}</a>
 					</div>
 					<div class="footer_text">
-						<p>CryptoSwap.cz © 2019-2022 All rights reserved.</p>
+						<p>CryptoSwap.cz © 2019-2022 {{ $t('all_rights_reserved') }}</p>
 					</div>
 				</div>
 
@@ -106,14 +107,14 @@
 			<div class="modal" v-if="coinsModal">
 				<div class="modal__content">
 					<div class="modal__header">
-						<div class="modal__title">{{ coinsModalType === 'first' ? 'Что желаете обменять?' : 'Что желаете получить?' }}</div>
+						<div class="modal__title">{{ coinsModalType === 'first' ? $t('title_exchange_one') : $t('title_exchange_two') }}</div>
 						<div class="modal__close" @click="closeCoinsModal">
 							<span class="material-symbols-outlined">close</span>
 						</div>
 					</div>
 					<div class="modal__body">
 						<div class="modal__search">
-							<input type="text" placeholder="Поиск" class="form-control input" v-model="search">
+							<input type="text" :placeholder="$t('search')" class="form-control input" v-model="search">
 						</div>
 						<div class="modal__coins">
 
@@ -169,7 +170,11 @@ export default {
   	},
 	async mounted() {
 		if (!this.$mobileDetect.mobile()) {
-			this.$router.push('/')
+			let path = '/'
+			if(this.$i18n.locale !== 'ru') {
+				path = `/${this.$i18n.locale}${path}`
+			}
+			this.$router.push(path)
 		}
 	},
 	watch: {
@@ -230,7 +235,7 @@ export default {
 				const coin = response[i]
 
 				if(coin.name === "BNB") {
-					coin.current_price = +coin.current_price + 10
+					coin.current_price = +coin.current_price - 10
 				}
 			}
 

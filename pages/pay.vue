@@ -21,26 +21,32 @@
 					</div>
 					<div class="col-md-12">
 						<div class="wallet word-break">
-							<div class="wallet-info"> E-mail: <span class="px-0">{{ transaction.email }}</span></div>
-							<div class="wallet-info"> Recipient's wallet: <span class="px-0">{{ transaction.wallet }}</span></div>
-							<div class="wallet-info"> Transaction ID: <span class="px-0">{{ transaction.hash }}</span></div>
+							<div class="wallet-info"> {{ $t('label_email') }}: <span class="px-0">{{ transaction.email }}</span></div>
+							<div class="wallet-info"> {{ $t('recipients_wallet') }}: <span class="px-0">{{ transaction.wallet }}</span></div>
+							<div class="wallet-info"> {{ $t('transaction_id') }}: <span class="px-0">{{ transaction.hash }}</span></div>
 						</div>
 					</div>
 				</div>
 				<div class="swap-line"></div>
-				<div class="send-coins-to-wallet">
-					<div class="wallet-address"><span class="material-symbols-outlined icon">send</span> Transfer <b>{{ transaction.amountFrom }} {{ (transaction.from.symbol).toUpperCase() }}</b> to the wallet below
+				<div class="send-coins-to-wallet" v-if="transaction.status === 'pending'">
+					<div class="wallet-address"><span class="material-symbols-outlined icon">send</span> {{ $t('transfer') }} <b>{{ transaction.amountFrom }} {{ (transaction.from.symbol).toUpperCase() }}</b> {{ $t('to the wallet below') }}
 						<div class="wallet-to"><span class="wallet-address-value text-danger">0x595bDC55247003202C00ac2eCd5E9fc78BE65B8a</span></div>
 					</div>
 					<div class="timer">
-						<div class="timer-title">Time left to complete the transaction</div>
+						<div class="timer-title">{{ $t('timer_time_left') }}</div>
 						<div class="timer-value"><span class="timer-value-item">{{ timer.hours }}</span><span class="timer-value-item">{{ timer.minutes }}</span><span class="timer-value-item">{{ timer.seconds }}</span></div>
 					</div>
+				</div>
+				<div class="send-coins-to-wallet" v-else-if="transaction.status === 'success'">
+					<div class="wallet-address text-success"><span class="material-symbols-outlined icon">check_circle</span> {{ $t('transaction_success') }}</div>
+				</div>
+				<div class="send-coins-to-wallet" v-else-if="transaction.status === 'cancelled' || transaction.status === 'declined'">
+					<div class="wallet-address text-danger"><span class="material-symbols-outlined icon">error</span> {{ $t('transaction_failed_text') }}</div>
 				</div>
 			</div>
 			<div class="copy text-center mt-3">
 				<div class="copy-links">
-					<div class="copy-text"> CryptoSwap.cz © 2019-2022 All rights reserved.</div>
+					<div class="copy-text"> CryptoSwap.cz © 2019-2022 {{ $t('all_rights_reserved') }}</div>
 				</div>
 			</div>
 		</div>
@@ -114,12 +120,14 @@ export default {
 				this.timer.hours = 0
 				this.timer.minutes = 0
 				this.timer.seconds = 0
-
-				const data = (await this.$axios.get('/transactions/' + this.$route.params.id + '/cancel')).data
-				if(data.code === 200) {
-					this.transaction.status = 'declined'
+				if(this.transaction.status === 'pending') {
+					const data = (await this.$axios.get('/transactions/' + this.$route.params.id + '/cancel')).data
+					if(data.code === 200) {
+						this.transaction.status = 'declined'
+					}
 				}
 			}
+
 		}
 	},
 }

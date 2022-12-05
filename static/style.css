@@ -639,3 +639,29 @@ a.transactions-history-block-item.d-flex {
 .error {
     border: 1px solid #dc3545;
 }
+
+button.btn.btn-exchange.disabled {
+    background: #363636;
+    color: #fff;
+}
+
+a.language {
+    color: #222531;
+    text-decoration: none;
+    margin-right: 10px;
+    background: #fafafa;
+    padding: 10px 20px;
+    border: 10px;
+    font-weight: 400;
+}
+
+a.language:hover {
+    background: #dcdcdc;
+}
+
+.aggremment {
+    white-space: pre-wrap;
+    font-family: 'Roboto';
+    word-break: break-word;
+    tab-size: 0;
+}

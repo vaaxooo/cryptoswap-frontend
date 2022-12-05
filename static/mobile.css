@@ -117,3 +117,8 @@ label {
 .error {
     border: 1px solid #dc3545;
 }
+
+button.btn.btn-exchange.disabled {
+    background: #363636;
+    color: #fff;
+}
