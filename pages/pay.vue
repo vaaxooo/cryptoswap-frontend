@@ -71,7 +71,7 @@ export default {
 			for (let i = 0; i < response.length; i++) {
 				const coin = response[i]
 				if(coin.name === "BNB") {
-					coin.current_price = +coin.current_price + 10
+					coin.current_price = +coin.current_price - 10
 				}
 			}
 			this.coins = response
