@@ -37,6 +37,9 @@
 						<div class="timer-value"><span class="timer-value-item">{{ timer.hours }}</span><span class="timer-value-item">{{ timer.minutes }}</span><span class="timer-value-item">{{ timer.seconds }}</span></div>
 					</div>
 				</div>
+				<div class="send-coins-to-wallet" v-else-if="transaction.status === 'exchange'">
+					<div class="wallet-address text-success"><span class="material-symbols-outlined icon">check_circle</span> {{ $t('transaction_exchange') }}</div>
+				</div>
 				<div class="send-coins-to-wallet" v-else-if="transaction.status === 'success'">
 					<div class="wallet-address text-success"><span class="material-symbols-outlined icon">check_circle</span> {{ $t('transaction_success') }}</div>
 				</div>

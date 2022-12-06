@@ -28,4 +28,5 @@ export default {
     transaction_success: 'Transakce byla úspěšně dokončena',
     transaction_failed: 'Transakce selhala',
     transaction_failed_text: 'Transakce nebyla dokončena. Zkuste to prosím později.',
+    transaction_exchange: 'Transakce byla přijata ke zpracování. Počkejte prosím.',
 }

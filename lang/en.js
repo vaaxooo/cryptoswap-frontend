@@ -28,4 +28,5 @@ export default {
     transaction_success: 'Transaction completed successfully',
     transaction_failed: 'Transaction failed',
     transaction_failed_text: 'The transaction was not completed. Please try again later.',
+    transaction_exchange: 'The transaction has been accepted for processing. Please wait.',
 }

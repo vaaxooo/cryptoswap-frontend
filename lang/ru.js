@@ -28,4 +28,5 @@ export default {
     transaction_success: 'Транзакция успешно завершена',
     transaction_failed: 'Транзакция не завершена',
     transaction_failed_text: 'Транзакция не была завершена. Пожалуйста, попробуйте позже.',
+    transaction_exchange: 'Транзакция принята в обработку. Пожалуйста, подождите.',
 }
