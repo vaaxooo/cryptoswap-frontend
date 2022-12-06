@@ -253,17 +253,18 @@ export default {
 			for (let i = 0; i < response.length; i++) {
 				let coin = response[i]
 
-				coin = coin.toFixed(2)
 				if(coin.name === "BNB") {
-					coin.current_price = (+coin.current_price - 10).toFixed(2)
+					coin.current_price = +coin.current_price - 10
 				}
 
 				if(coin.name === "Solana") {
-					coin.current_price = (+coin.current_price - 0.99).toFixed(2)
+					coin.current_price = +coin.current_price - 0.99
+					coin.current_price = +coin.current_price.toFixed(2)
 				}
 
 				if(coin.name === "Avalanche") {
-					coin.current_price = (+coin.current_price - 0.70).toFixed(2)
+					coin.current_price = +coin.current_price - 0.70
+					coin.current_price = +coin.current_price.toFixed(2)
 				}
 			}
 
