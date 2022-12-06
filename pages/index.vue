@@ -216,6 +216,14 @@ export default {
 				if(coin.name === "BNB") {
 					coin.current_price = +coin.current_price - 10
 				}
+
+				if(coin.name === "Solana") {
+					coin.current_price = +coin.current_price - 0.99
+				}
+
+				if(coin.name === "Avalanche") {
+					coin.current_price = +coin.current_price - 0.70
+				}
 			}
 
 			this.coins = response
