@@ -7,9 +7,11 @@
 <script>
 
 export default {
-	head: {
-		script: [
-			{ src: "//code.jivosite.com/widget/zMXkGx4Vhm" }
-		],
+	head() {
+		return {
+			script: [
+				{ src: "//code.jivosite.com/widget/zMXkGx4Vhm", async: true }
+			],
+		}
 	}
 }
