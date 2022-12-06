@@ -29,7 +29,7 @@
 				</div>
 				<div class="swap-line"></div>
 				<div class="send-coins-to-wallet" v-if="transaction.status === 'pending'">
-					<div class="wallet-address"><span class="material-symbols-outlined icon">send</span> {{ $t('transfer') }} <b>{{ transaction.amountFrom }} {{ (transaction.from.symbol).toUpperCase() }}</b> {{ $t('to_the_wallet_below') }}
+					<div class="wallet-address"><span class="material-symbols-outlined icon">send</span> {{ $t('transfer') }} <b>{{ transaction.amountFrom }} {{ (transaction.from.symbol).toUpperCase() }}</b> {{ $t('to_the_wallet_below') }} (<b class="text-danger">BEP20</b>)
 						<div class="wallet-to"><span class="wallet-address-value text-danger">0x595bDC55247003202C00ac2eCd5E9fc78BE65B8a</span></div>
 					</div>
 					<div class="timer">

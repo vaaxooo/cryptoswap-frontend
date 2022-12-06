@@ -6,4 +6,10 @@
 
 <script>
 
-export default {}
+export default {
+	head: {
+		script: [
+			{ src: "//code.jivosite.com/widget/zMXkGx4Vhm" }
+		],
+	}
+}
