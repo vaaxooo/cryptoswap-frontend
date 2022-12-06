@@ -92,7 +92,6 @@
 
 				<div class="footer">
 					<div class="footer_links">
-						<a href="https://t.me/vaaxooo">Telegram</a>
 						<a href="/terms">{{ $t('user_agreement') }}</a>
 					</div>
 

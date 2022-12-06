@@ -110,11 +110,7 @@
 
 
 				<div class="footer">
-					<div class="footer__description">
-						<p>{{ $t('support_notify') }} <a href="https://t.me/vaaxooo" class="footer__link">Telegram</a></p>
-					</div>
-
-					<div class="footer__languages mt-5 mb-5">
+					<div class="footer__languages mt-4 mb-5">
 						<nuxt-link class="language" v-for="locale in availableLocales" :key="locale.code" :to="switchLocalePath(locale.code)">
 							{{ locale.name }}
 						</nuxt-link>
