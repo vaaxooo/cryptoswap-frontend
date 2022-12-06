@@ -147,6 +147,13 @@ export default {
   	layout: 'default',
 	head() {
 		return {
+			script: [
+				{ src: "//code.jivosite.com/widget/zMXkGx4Vhm", async: true }
+			],
+		}
+	},
+	head() {
+		return {
 			link: [
 				{
 					rel: 'stylesheet',
