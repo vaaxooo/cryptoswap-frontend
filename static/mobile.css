@@ -71,7 +71,7 @@ label {
 
 .modal {
     display: block;
-    background: #fafafa;
+    background: #f8f8f8;
 }
 
 .modal__content {
@@ -120,4 +120,8 @@ label {
 button.btn.btn-exchange.disabled {
     background: #363636;
     color: #fff;
+}
+
+.modal__search {
+    margin-bottom: 10px;
 }

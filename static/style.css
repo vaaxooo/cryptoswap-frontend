@@ -2,15 +2,15 @@
     display: inline-block;
     width: 100%;
     padding: 20px;
-    background-color: #fafafa;
+    background-color: #ffffff;
     cursor: pointer;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f5f5f5;
 }
 
 .crypto-list-item:hover {
     /* box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2); */
     background: #35ca77;
-    border: 1px solid #eeeeee;
+    border: 0;
 }
 
 .crypto-list-item .crypto-list-item-name {
@@ -65,12 +65,12 @@ body {
 }
 
 .col-md-2.px-0 {
-    background: #fafafa;
-    border-right: 1px solid #f0f0f0;
+    background: #ffffff;
+    border-right: 1px solid #f5f5f5;
 }
 
 .exchange-form {
-    background: #fff;
+    background: transparent;
     border-radius: 4px;
     margin-bottom: 20px;
     width: 500px;
@@ -224,7 +224,8 @@ label {
     right: 0;
     bottom: 0;
     z-index: 999;
-    background: #fff;
+    background: rgb(250, 250, 250);
+    background: linear-gradient(90deg, rgba(250, 250, 250, 1) 0%, rgba(255, 255, 255, 1) 19%, rgba(244, 244, 244, 1) 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -545,6 +546,9 @@ span.timer-value-item {
     .timer-value {
         margin: 15px;
     }
+    .exchange-form {
+        background: #fff;
+    }
 }
 
 a.transactions-history-block-item.d-flex {
@@ -632,6 +636,22 @@ a.transactions-history-block-item.d-flex {
     a.language {
         margin-right: 0!important;
     }
+    .description,
+    .footer {
+        width: 100%!important;
+        padding: 20px!important;
+        display: block!important;
+    }
+    .crypto-list-item {
+        background: #ffffff!important;
+        border-bottom: 1px solid #dedede!important;
+    }
+    .crypto-name {
+        color: #222531!important;
+    }
+    .crypto-price {
+        color: #007000!important;
+    }
 }
 
 .footer__link {
@@ -683,4 +703,33 @@ img.flag {
 
 .footer__languages {
     display: flex;
+}
+
+.crypto-list-item {
+    background: #272727;
+    border-bottom: 1px solid #2d2d2d;
+}
+
+span.crypto-name {
+    color: #fff;
+}
+
+span.crypto-price {
+    color: #fff;
+}
+
+.col-md-2.px-0.scroll {
+    border-right: 1px solid #2d2d2d;
+}
+
+.list-title {
+    color: #fff;
+}
+
+.col-md-2.px-0.scroll {
+    background: #2d2d2d;
+}
+
+span.crypto-name-landing {
+    font-weight: 500;
 }

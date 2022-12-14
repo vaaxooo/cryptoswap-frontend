@@ -37,8 +37,8 @@
 												<img :src="coinOne.image" :alt="coinOne.name">
 											</div>
 											<div class="crypto-list-item-description">
-												<span class="crypto-name">{{ coinOne.name }}</span>
-												<span class="crypto-price">{{ coinOne.current_price }} $</span>
+												<span class="crypto-name-landing">{{ coinOne.name }}</span>
+												<span class="crypto-price-landing">{{ coinOne.current_price }} $</span>
 											</div>
 										</div>
 									</div>
@@ -54,8 +54,8 @@
 												<img :src="coinTwo.image" :alt="coinTwo.name">
 											</div>
 											<div class="crypto-list-item-description">
-												<span class="crypto-name">{{ coinTwo.name }}</span>
-												<span class="crypto-price">{{ coinTwo.current_price }} $</span>
+												<span class="crypto-name-landing">{{ coinTwo.name }}</span>
+												<span class="crypto-price-landing">{{ coinTwo.current_price }} $</span>
 											</div>
 										</div>
 									</div>
