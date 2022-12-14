@@ -624,6 +624,14 @@ a.transactions-history-block-item.d-flex {
     .pay-mt-5 {
         margin-top: 0!important;
     }
+    .footer__languages {
+        margin: auto;
+        display: flex;
+        justify-content: unset;
+    }
+    a.language {
+        margin-right: 0!important;
+    }
 }
 
 .footer__link {
@@ -649,7 +657,7 @@ a.language {
     color: #222531;
     text-decoration: none;
     margin-right: 10px;
-    background: #fafafa;
+    background: transparent;
     padding: 10px 20px;
     border: 10px;
     font-weight: 400;
@@ -664,4 +672,15 @@ a.language:hover {
     font-family: 'Roboto';
     word-break: break-word;
     tab-size: 0;
+}
+
+img.flag {
+    width: 24px;
+    height: 15px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.footer__languages {
+    display: flex;
 }

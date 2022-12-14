@@ -97,6 +97,7 @@
 
 					<div class="footer__languages mt-5 mb-5">
 						<nuxt-link class="language" v-for="locale in availableLocales" :key="locale.code" :to="switchLocalePath(locale.code)">
+							<img :src="'/lang_icons/' + locale.code + '.png'" :alt="locale.name" class="mr-2 flag">
 							{{ locale.name }}
 						</nuxt-link>
 					</div>

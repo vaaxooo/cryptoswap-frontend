@@ -55,6 +55,7 @@ export default {
             { code: 'en', iso: 'en-US', file: 'en.js', name: 'English' },
             { code: 'ru', iso: 'ru-RU', file: 'ru.js', name: 'Русский' },
             { code: 'cz', iso: 'cz-CZ', file: 'cz.js', name: 'Čeština' },
+            { code: 'ua', iso: 'ua-UA', file: 'ua.js', name: 'Українська' },
         ],
         lazy: true,
         langDir: 'lang/',
@@ -62,6 +63,11 @@ export default {
         vueI18n: {
             fallbackLocale: 'ru',
         },
+        detectBrowserLanguage: {
+            useCookie: true,
+            cookieKey: 'i18n_redirected',
+            redirectOn: 'root', // recommended
+        }
     },
 
     axios: {
