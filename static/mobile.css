@@ -70,7 +70,6 @@ label {
 }
 
 .modal {
-    position: absolute;
     display: block;
     background: #fafafa;
 }
