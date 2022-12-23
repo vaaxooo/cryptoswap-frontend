@@ -38,7 +38,7 @@
 						</div>
 
 						<ul class="exchange__block-list exchange__block-list-send">
-							<li class="exchange__block-item exchange__block-item-send text-white" v-for="coin in coins" :key="coin.id" :class="{'exchange__block-item_active': coin.symbol === coinOne.symbol}" @click="coinOne = coin">
+							<li class="exchange__block-item exchange__block-item-send text-white" v-for="coin in coins" :key="coin.id" :class="{'exchange__block-item_active': coin.name === coinOne.name}" @click="coinOne = coin">
 								<img :src="'/coins/' + coin.symbol + '.png'" :alt="(coin.symbol).toUpperCase()" height="48px" class="p-2"> {{ (coin.name).toUpperCase() }}
 							</li>
 						</ul>
@@ -50,7 +50,7 @@
 						</div>
 
 						<ul class="exchange__block-list exchange__block-list-receive">
-							<li class="exchange__block-item exchange__block-item-send text-white" v-for="coin in coins" :key="coin.id" :class="{'exchange__block-item_active': coin.symbol === coinTwo.symbol}" @click="coinTwo = coin">
+							<li class="exchange__block-item exchange__block-item-send text-white" v-for="coin in coins" :key="coin.id" :class="{'exchange__block-item_active': coin.name === coinTwo.name}" @click="coinTwo = coin">
 								<img :src="'/coins/' + coin.symbol + '.png'" :alt="(coin.symbol).toUpperCase()" height="48px" class="p-2"> {{ (coin.name).toUpperCase() }}
 							</li>
 						</ul>
