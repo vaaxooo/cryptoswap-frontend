@@ -1817,7 +1817,7 @@ input[type=number]:focus {
         height: 40px
     }
     .support__logo {
-        font-size: 40px;
+        font-size: 40px!important;
         color: #fff;
         font-weight: 600;
     }
