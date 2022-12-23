@@ -1,67 +1,106 @@
 <template>
-	<div class="row pay-mt-5">
-		<div class="centered">
-			<h2 class="container-title text-center mb-3">CryptoSwap.cz</h2>
-			<div class="exchange-block-info" v-if="transaction && Object.keys(transaction).length > 0">
-				<div class="row">
-					<div class="col-md-12 d-flex">
-						<div class="coin-info">
-							<img :src="transaction.from.image" alt="" loading="lazy" class="coin-image">
-							<div class="coin-info-desc">
-								<div class="coin-info-name">{{ transaction.from.name }} <span class="small">{{ transaction.amountFrom }} {{ (transaction.from.symbol).toUpperCase() }}</span></div>
+	<div class="content">
+		<section class="transaction">
+			<div class="container transaction__container wow animate__fadeInUp" style="visibility: visible;" v-if="Object.keys(transaction).length > 0">
+				<h1 class="transaction__title">Exchange <br> {{ transaction.coin_from.name }} ({{ (transaction.coin_from.symbol).toUpperCase() }}) on {{ transaction.coin_to.name }} ({{ (transaction.coin_to.symbol).toUpperCase() }})</h1>
+
+				<div class="transaction__order">
+					Order ID <span>{{ transaction.hash }}</span>
+				</div>
+
+				<div class="transaction-1">
+					<div class="transaction__block">
+						<div class="transaction__block-title">
+							Pay directly to the wallet
+						</div>
+
+						<div class="transaction__block-wrapper">
+							<div class="transaction__block-text">
+								You send: {{ transaction.amountFrom }} {{ (transaction.coin_from.symbol).toUpperCase() }}                        </div>
+							<div class="transaction__block-text">
+								You receive: 5 ETH                        </div>
+						</div>
+
+						<div class="transaction__block-input-wrapper">
+							<div class="transaction__block-input-img">
+								<img src="/images/coin.svg" alt="coin">
+							</div>
+							<input class="transaction__block-input" type="text" :value="transaction.amountFrom + ' ' + (transaction.coin_from.symbol).toUpperCase()" readonly="">
+							<div class="transaction__block-input-copy transaction__block-input-copy-val" @click="clipcopy(transaction.amountFrom)">
+								Click to copy
 							</div>
 						</div>
-						<div class="exchange-block-info-arrow m-auto mt-0"><span class="material-symbols-outlined">arrow_forward</span></div>
-						<div class="coin-info">
-							<img :src="transaction.to.image" alt="" loading="lazy" class="coin-image">
-							<div class="coin-info-desc">
-								<div class="coin-info-name">{{ transaction.to.name }} <span class="small">{{ transaction.amountTo }} {{ (transaction.to.symbol).toUpperCase() }}</span></div>
+						<div class="transaction__block-input-wrapper">
+							<div class="transaction__block-input-img">
+								<img src="/images/wallet.svg" alt="wallet">
+							</div>
+
+							<input class="transaction__block-input" type="text" :value="transaction.coin_from.wallet" readonly="">
+
+							<div class="transaction__block-input-copy transaction__block-input-copy-wallet" @click="clipcopy(transaction.coin_from.wallet)">
+								Click to copy
+							</div>
+						</div>
+
+						<div class="mt-3 status">
+							<div class="send-coins-to-wallet" v-if="transaction.status === 'pending'">
+								<div class="timer">
+									<div class="timer-title text-white">Time left to complete the transaction</div>
+									<div class="timer-value text-white"><span class="timer-value-item">{{ timer.hours }}</span>:<span class="timer-value-item">{{ timer.minutes }}</span>:<span class="timer-value-item">{{ timer.seconds }}</span></div>
+								</div>
+							</div>
+							<div class="send-coins-to-wallet" v-else-if="transaction.status === 'success'">
+								<div class="wallet-address text-success"><span class="material-symbols-outlined icon">check_circle</span> Transaction completed successfully</div>
+							</div>
+							<div class="send-coins-to-wallet" v-else-if="transaction.status === 'cancelled' || transaction.status === 'declined'">
+								<div class="wallet-address text-danger"><span class="material-symbols-outlined icon">error</span> The transaction was not completed. Please try again later.</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-12">
-						<div class="wallet word-break">
-							<div class="wallet-info"> {{ $t('label_email') }}: <span class="px-0">{{ transaction.email }}</span></div>
-							<div class="wallet-info"> {{ $t('recipients_wallet') }}: <span class="px-0">{{ transaction.wallet }}</span></div>
-							<div class="wallet-info"> {{ $t('transaction_id') }}: <span class="px-0">{{ transaction.hash }}</span></div>
-						</div>
-					</div>
 				</div>
-				<div class="swap-line"></div>
-				<div class="send-coins-to-wallet" v-if="transaction.status === 'pending'">
-					<div class="wallet-address"><span class="material-symbols-outlined icon">send</span> {{ $t('transfer') }} <b>{{ transaction.amountFrom }} {{ (transaction.from.symbol).toUpperCase() }}</b> {{ $t('to_the_wallet_below') }} (<b class="text-danger">BEP20</b>)
-						<div class="wallet-to"><span class="wallet-address-value text-danger">0x595bDC55247003202C00ac2eCd5E9fc78BE65B8a</span></div>
-					</div>
-					<div class="timer">
-						<div class="timer-title">{{ $t('timer_time_left') }}</div>
-						<div class="timer-value"><span class="timer-value-item">{{ timer.hours }}</span><span class="timer-value-item">{{ timer.minutes }}</span><span class="timer-value-item">{{ timer.seconds }}</span></div>
-					</div>
-				</div>
-				<div class="send-coins-to-wallet" v-else-if="transaction.status === 'exchange'">
-					<div class="wallet-address text-success"><span class="material-symbols-outlined icon">check_circle</span> {{ $t('transaction_exchange') }}</div>
-				</div>
-				<div class="send-coins-to-wallet" v-else-if="transaction.status === 'success'">
-					<div class="wallet-address text-success"><span class="material-symbols-outlined icon">check_circle</span> {{ $t('transaction_success') }}</div>
-				</div>
-				<div class="send-coins-to-wallet" v-else-if="transaction.status === 'cancelled' || transaction.status === 'declined'">
-					<div class="wallet-address text-danger"><span class="material-symbols-outlined icon">error</span> {{ $t('transaction_failed_text') }}</div>
+
+				<div class="transaction__btns">
+					<a class="transaction__btn" href="/">
+						<img src="/images/home.svg" alt="home">
+						Get back
+					</a>
 				</div>
 			</div>
-			<div class="copy text-center mt-3">
-				<div class="copy-links">
-					<div class="copy-text"> CryptoSwap.cz © 2019-2022 {{ $t('all_rights_reserved') }}</div>
-				</div>
-			</div>
-		</div>
+		</section>
+		<layouts-footer />
 	</div>
 </template>
 <script>
 export default {
 	name: 'Pay',
+	layout: 'default',
+	auth: false,
+	head() {
+		return {
+			script: [
+				{ src: "//code.jivosite.com/widget/zMXkGx4Vhm", async: true }
+			],
+			link: [
+				{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+				{ rel: 'stylesheet', type: 'text/css', href: 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css' },
+				{ rel: 'stylesheet', type: 'text/css', href: '/css/bootstrap-reboot.min.css' },
+				{ rel: 'stylesheet', type: 'text/css', href: '/css/animate.min.css' },
+				{ rel: 'stylesheet', type: 'text/css', href: '/css/fonts.css' },
+				{ rel: 'stylesheet', type: 'text/css', href: '/css/style.min.css' },
+				{ rel: 'stylesheet', type: 'text/css', href: '/css/main.css' },
+				{ rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap' },
+				{ rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap' },
+				{ rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' },
+				{ rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined' },
+			]
+		}
+	},
 	data() {
 		return {
 			coins: [],
 			transaction: [],
+			coin_from: [],
+			coin_to: [],
 
 			timer: {
 				hours: 0,
@@ -88,17 +127,10 @@ export default {
 		
 		async getTransaction() {
 			const response = (await this.$axios.get('/transactions/' + this.$route.params.id)).data
-			if(response.status == 'success') {
-				this.transaction = response.data
-
-				this.coins.forEach(coin => {
-					if(coin.id === this.transaction.coinFrom) {
-						this.transaction.from = coin
-					}
-					if(coin.id === this.transaction.coinTo) {
-						this.transaction.to = coin
-					}
-				})
+			if(response.status) {
+				this.transaction = response.data.transaction
+				this.transaction.coin_from = response.data.coin_from
+				this.transaction.coin_to = response.data.coin_to
 
 				setInterval(() => {
 					this.timerTrack()
@@ -131,6 +163,10 @@ export default {
 				}
 			}
 
+		},
+
+		async clipcopy(text) {
+			await this.$copyText(text);
 		}
 	},
 }

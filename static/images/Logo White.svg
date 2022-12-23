@@ -1,0 +1,22 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 708 143" width="708" height="143">
+	<title>Logo White-svg</title>
+	<style>
+		tspan { white-space:pre }
+		.txt0 { font-size: 95px;fill: #ffffff;font-weight: 400;font-family: "DejaVuSans", "DejaVu Sans" } 
+		.txt1 { font-size: 66px;fill: #ffffff;font-weight: 400;font-family: "DejaVuSans", "DejaVu Sans" } 
+	</style>
+	<text id="" style="transform: matrix(1,0,0,1,65.056,54.467)" >
+	</text>
+	<text id="S" style="transform: matrix(1,0,0,1,138,121)" >
+		<tspan x="0" y="0" class="txt0">S
+</tspan>
+	</text>
+	<text id="C" style="transform: matrix(1,0,0,1,76,95)" >
+		<tspan x="0" y="0" class="txt0">C
+</tspan>
+	</text>
+	<text id="CryptoSwap" style="transform: matrix(1,0,0,1,210,98)" >
+		<tspan x="0" y="0" class="txt1">C</tspan><tspan  y="0" class="txt1">r</tspan><tspan  y="0" class="txt1">y</tspan><tspan  y="0" class="txt1">p</tspan><tspan  y="0" class="txt1">t</tspan><tspan  y="0" class="txt1">o</tspan><tspan  y="0" class="txt1">S</tspan><tspan  y="0" class="txt1">w</tspan><tspan  y="0" class="txt1">a</tspan><tspan  y="0" class="txt1">p
+</tspan>
+	</text>
+</svg>

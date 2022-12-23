@@ -24,14 +24,12 @@ export default {
             { rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' },
             { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined' },
             { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;700;900&display=swap' },
-
-            { rel: 'stylesheet', href: '/style.css' },
         ]
     },
 
     // Global CSS: https://go.nuxtjs.dev/config-css
     css: [
-        '~/static/style.css'
+
     ],
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -43,14 +41,19 @@ export default {
     components: true,
 
     // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-    buildModules: [],
+    buildModules: ['moment'],
 
     // Modules: https://go.nuxtjs.dev/config-modules
     modules: [
         "@nuxtjs/axios",
         "nuxt-mobile", ['@nuxtjs/dotenv', { systemvars: true }, ],
-        "@nuxtjs/i18n"
+        "@nuxtjs/i18n",
+        "@nuxtjs/auth-next", "@nuxtjs/toast", ['nuxt-clipboard', { autoSetContainer: true }]
     ],
+
+    clipboard: {
+        autoSetContainer: true
+    },
 
     i18n: {
         locales: [
@@ -74,6 +77,48 @@ export default {
 
     axios: {
         baseURL: process.env.API,
+    },
+
+    toast: {
+        position: 'bottom-center',
+        duration: 5000
+    },
+
+    auth: {
+        redirect: {
+            login: '/admin/login',
+            home: '/',
+            logout: '/admin/login',
+            callback: '/admin/login',
+        },
+        localStorage: false,
+        strategies: {
+            local: {
+                token: {
+                    property: 'token',
+                    global: true,
+                    required: true,
+                    type: 'Bearer',
+                    maxAge: 3600
+                },
+                user: {
+                    property: 'user',
+                    autoFetch: false
+                },
+                endpoints: {
+                    login: { url: '/auth/login', method: 'post' },
+                    refresh: { url: '/auth/refresh', method: 'post' },
+                    logout: false,
+                    user: { url: '/admin/auth/me', method: 'post' }
+                }
+            }
+        },
+        preserveState: true,
+        watchLoggedIn: true
+    },
+
+    router: {
+        middleware: ['auth']
     },
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
