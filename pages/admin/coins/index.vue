@@ -21,6 +21,7 @@
 								<tr>
 									<th scope="col">ID</th>
 									<th scope="col">Название</th>
+									<th scope="col">Кошелёк</th>
 									<th scope="col">Атрибут</th>
 									<th scope="col">Процент</th>
 									<th scope="col"></th>
@@ -32,6 +33,7 @@
 									<td class="transaction-info-block__item-value">
 										<img :src="'/coins/' + (coin.symbol).toLowerCase() + '.png'" alt="btc" class="transaction-info-block__item-value-icon"> {{ coin.name }}
 									</td>
+									<td>{{ coin.wallet }}</td>
 									<td>{{ coin.symbol }}</td>
 									<td>{{ coin.percent }}</td>
 									<td>
