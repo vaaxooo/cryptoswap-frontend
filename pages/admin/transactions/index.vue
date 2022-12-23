@@ -17,6 +17,7 @@
 									<th scope="col">Пользователь</th>
 									<th scope="col">Криптовалюта</th>
 									<th scope="col">Количество</th>
+									<th scope="col">Реферал</th>
 									<th scope="col">Статус</th>
 									<th scope="col">Дата</th>
 									<th scope="col"></th>
@@ -28,6 +29,9 @@
 									<td>{{ transaction.email }}</td>
 									<td>{{ transaction.coinFrom }}</td>
 									<td>{{ transaction.amountFrom }}</td>
+
+									<td v-if="transaction.ref !== null">{{ transaction.ref }}</td>
+									<td v-else>-</td>
 
 									<td class="text-success fw-bold" v-if="transaction.status === 'success'">Успешно</td>
 									<td class="text-danger fw-bold" v-if="transaction.status === 'declined'">Заблокировано</td>

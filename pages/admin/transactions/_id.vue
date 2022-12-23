@@ -55,6 +55,16 @@
 								</div>
 							</div>
 
+
+							<div class="col-md-4 col-6">
+								<div class="transaction-info-block__item">
+									<div class="transaction-info-block__item-title">Реферал</div>
+									<div class="transaction-info-block__item-value">
+										{{ transaction.ref ?? 'Не указан' }}
+									</div>
+								</div>
+							</div>
+
 							<div class="col-md-4 col-6">
 								<div class="transaction-info-block__item">
 									<div class="transaction-info-block__item-title">Статус транзакции</div>

@@ -180,7 +180,7 @@
 		</section>
 
 
-		<!-- <section class="support" id="support">
+		<section class="support" id="support">
 			<div class="container support__container">
 				<div class="support__logo">
 					CryptoSwap.cz
@@ -191,12 +191,12 @@
 				<div class="support__text">
 					Send message to our support!
 				</div>
-				<a class="support__btn" href="https://telegram.me/spot_exchange">
+				<a class="support__btn" href="https://telegram.me/CzSwapSupport">
 					<img src="images/tg.svg" alt="tg">
 					Open chat
 				</a>
 			</div>
-		</section> -->
+		</section>
 
 		<layouts-footer />
 	</div>
