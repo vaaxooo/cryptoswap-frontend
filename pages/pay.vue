@@ -18,7 +18,7 @@
 							<div class="transaction__block-text">
 								You send: {{ transaction.amountFrom }} {{ (transaction.coin_from.symbol).toUpperCase() }}                        </div>
 							<div class="transaction__block-text">
-								You receive: 5 ETH                        </div>
+								You receive: {{ transaction.amountTo }} {{ (transaction.coin_to.symbol).toUpperCase() }}                        </div>
 						</div>
 
 						<div class="transaction__block-input-wrapper">
