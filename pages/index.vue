@@ -242,6 +242,8 @@ export default {
 			ref: '',
 			bonus_wallet: '',
 			bonus_status: '',
+
+			errors: []
 		}
   	},
 	computed: {
@@ -325,6 +327,32 @@ export default {
 		},
 
 		async exchange() {
+
+			if(!this.coinOne || !this.coinTwo) {
+				this.$toast.error('Choose coins')
+				return
+			}
+
+			if(!this.amountFrom) {
+				this.$toast.error('Enter amount')
+				return
+			}
+
+			if(!this.email) {
+				this.$toast.error('Enter email')
+				return
+			}
+
+			if(!this.wallet) {
+				this.$toast.error('Enter wallet')
+				return
+			}
+
+			if(this.amountFrom < 0.01) {
+				this.$toast.error('Minimum amount is 0.01')
+				return
+			}
+
 			const response = (await this.$axios.post('/transactions', {
 				coinFrom: this.coinOne.id,
 				coinTo: this.coinTwo.id,

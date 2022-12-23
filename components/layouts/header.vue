@@ -13,19 +13,19 @@
 					<nav class="header__nav">
 						<ul class="header__list">
 							<li class="header__item">
-								<a class="header__link" href="#about">About</a>
+								<a class="header__link" href="#about" click="closeMenu">About</a>
 							</li>
 							<li class="header__item">
-								<a class="header__link" href="#exchange">Exchange</a>
+								<a class="header__link" href="#exchange" click="closeMenu">Exchange</a>
 							</li>
 							<li class="header__item">
-								<a class="header__link" href="#how-exchange">How exchange</a>
+								<a class="header__link" href="#how-exchange" click="closeMenu">How exchange</a>
 							</li>
 							<li class="header__item">
-								<a class="header__link" href="#transactions">Transactions</a>
+								<a class="header__link" href="#transactions" click="closeMenu">Transactions</a>
 							</li>
 							<li class="header__item">
-								<a class="header__link" href="#support">Support</a>
+								<a class="header__link" href="#support" click="closeMenu">Support</a>
 							</li>
 						</ul>
 					</nav>
@@ -49,12 +49,12 @@
 							</div>
 							<img class="header__lang-arrow" src="/images/arrow.svg" alt="arrow">
 						</div> -->
-						<a class="header__btn" href="#exchange">
+						<a class="header__btn" href="#exchange" click="closeMenu">
 							Exchange
 						</a>
 					</div>
 				</div>
-				<div class="header__burger">
+				<div class="header__burger" @click="menu">
 					<span></span>
 					<span></span>
 					<span></span>
@@ -64,19 +64,19 @@
 				<nav class="header__nav">
 					<ul class="header__list">
 						<li class="header__item">
-							<a class="header__link" href="#about">About</a>
+							<a class="header__link" href="#about" click="closeMenu">About</a>
 						</li>
 						<li class="header__item">
-							<a class="header__link" href="#exchange">Exchange</a>
+							<a class="header__link" href="#exchange" click="closeMenu">Exchange</a>
 						</li>
 						<li class="header__item">
-							<a class="header__link" href="#how-exchange">How exchange</a>
+							<a class="header__link" href="#how-exchange" click="closeMenu">How exchange</a>
 						</li>
 						<li class="header__item">
-							<a class="header__link" href="#transactions">Transactions</a>
+							<a class="header__link" href="#transactions" click="closeMenu">Transactions</a>
 						</li>
 						<li class="header__item">
-							<a class="header__link" href="#support">Support</a>
+							<a class="header__link" href="#support" click="closeMenu">Support</a>
 						</li>
 					</ul>
 				</nav>
@@ -98,7 +98,7 @@
 						</div>
 						<img class="header__lang-arrow" src="/images/arrow.svg" alt="arrow">
 					</div> -->
-					<a class="header__btn" href="#exchange">
+					<a class="header__btn" href="#exchange" click="closeMenu">
 						Exchange
 					</a>
 				</div>
@@ -106,3 +106,24 @@
 		</div>
 	</header>
 </template>
+
+<script>
+export default {
+	name: 'Header',
+	methods: {
+		menu() {
+			const burger = document.querySelector('.header__burger');
+			const burgerContent = document.querySelector('.header__burger-content');
+			burger.classList.toggle('active');
+			burgerContent.classList.toggle('active');
+		},
+
+		closeMenu() {
+			const burger = document.querySelector('.header__burger');
+			const burgerContent = document.querySelector('.header__burger-content');
+			burger.classList.remove('active');
+			burgerContent.classList.remove('active');
+		},
+	},
+};
+</script>
