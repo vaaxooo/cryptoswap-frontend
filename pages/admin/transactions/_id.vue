@@ -67,6 +67,15 @@
 
 							<div class="col-md-4 col-6">
 								<div class="transaction-info-block__item">
+									<div class="transaction-info-block__item-title">Кошелёк получателя</div>
+									<div class="transaction-info-block__item-value">
+										{{ transaction.wallet ?? 'Не указан' }}
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-4 col-6">
+								<div class="transaction-info-block__item">
 									<div class="transaction-info-block__item-title">Статус транзакции</div>
 									<div class="transaction-info-block__item-value">
 										<span class="badge bg-success fw-bold" v-if="transaction.status === 'success'">Успешно</span>
