@@ -12,7 +12,7 @@ export default {
             { charset: 'utf-8' },
             { name: 'viewport', content: 'width=device-width, initial-scale=1' },
             { hid: 'keywords', name: 'keywords', content: 'crypto, swap, cryptoswap, exchange' },
-            { hid: 'description', name: 'description', content: 'A reliable service that will fulfill its obligations to convert your funds in a timely and complete manner. On our resource you can exchange bitcoins and other digital currencies at the most favorable exchange rate.' },
+            { hid: 'description', name: 'description', content: 'The leading cryptocurrency exchange platform offers different trading options, provides 24/7 customer support, high level of security.' },
             { name: 'format-detection', content: 'telephone=yes' }
         ],
         link: [
