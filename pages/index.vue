@@ -354,8 +354,9 @@ export default {
 				return
 			}
 
-			if(this.amountFrom < 0.01) {
-				this.$toast.error('Minimum amount is 0.01')
+			this.errors = []
+			if(+this.amountFrom < +this.coinOne.min_amount) {
+				this.errors['amountFrom'] = ['Minimum amount is ' + this.coinOne.min_amount + ' ' + (this.coinOne.symbol).toUpperCase()]
 				return
 			}
 
