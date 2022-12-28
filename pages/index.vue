@@ -39,7 +39,7 @@
 
 						<ul class="exchange__block-list exchange__block-list-send">
 							<li class="exchange__block-item exchange__block-item-send text-white" v-for="coin in coins" :key="coin.id" :class="{'exchange__block-item_active': coin.name === coinOne.name}" @click="coinOne = coin">
-								<img :src="'/coins/' + coin.symbol + '.png'" :alt="(coin.symbol).toUpperCase()" height="48px" class="p-2"> {{ (coin.symbol).toUpperCase() }} ({{ coin.network }})
+								<img :src="'/coins/' + coin.symbol + '.png'" :alt="(coin.symbol).toUpperCase()" height="48px" class="p-2"> {{ (coin.name).toUpperCase() }}
 							</li>
 						</ul>
 					</div>
@@ -51,7 +51,7 @@
 
 						<ul class="exchange__block-list exchange__block-list-receive">
 							<li class="exchange__block-item exchange__block-item-send text-white" v-for="coin in coins" :key="coin.id" :class="{'exchange__block-item_active': coin.name === coinTwo.name}" @click="coinTwo = coin">
-								<img :src="'/coins/' + coin.symbol + '.png'" :alt="(coin.symbol).toUpperCase()" height="48px" class="p-2"> {{ (coin.symbol).toUpperCase() }} ({{ coin.network }})
+								<img :src="'/coins/' + coin.symbol + '.png'" :alt="(coin.symbol).toUpperCase()" height="48px" class="p-2"> {{ (coin.name).toUpperCase() }}
 							</li>
 						</ul>
 					</div>
@@ -64,12 +64,13 @@
 						<div class="exchange__block-form">
 							<div class="exchange__block-wrapper">
 								<div class="exchange__block-text exchange__block-text-send">
-									You send
+									You send (min: {{ coinOne.min_amount }})
 								</div>
 								<div class="exchange__block-header exchange__block-header-send">
 									{{ coinOne.name }} ({{ coinOne.symbol }})
 								</div>
-								<input class="exchange__block-input exchange__block-input-val exchange__block-input-send" type="number" step="any" required="" v-model="amountFrom">
+								<input class="exchange__block-input exchange__block-input-val exchange__block-input-send" type="number" step="any" required="" v-model="amountFrom" :class="{'is-invalid': errors.amountFrom}">
+								<span class="invalid-feedback" v-if="errors.amountFrom">{{ errors.amountFrom[0] }}</span>
 							</div>
 
 							<div class="exchange__block-wrapper">
@@ -261,8 +262,9 @@ export default {
 				this.amountTo = price ? price.toFixed(8) : 0
 		},
 		amountFrom() {
+			this.errors = []
 			if(+this.amountFrom < +this.coinOne.min_amount) {
-				this.$toast.error('Minimum amount is ' + this.coinOne.min_amount + ' ' + (this.coinOne.symbol).toUpperCase())
+				this.errors['amountFrom'] = ['Minimum amount is ' + this.coinOne.min_amount + ' ' + (this.coinOne.symbol).toUpperCase()]
 			}
 
 			if(this.coinOne && this.coinTwo) {

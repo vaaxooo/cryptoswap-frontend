@@ -25,6 +25,15 @@
 							<div class="transaction__block-input-img">
 								<img src="/images/coin.svg" alt="coin">
 							</div>
+							<input class="transaction__block-input" type="text" :value="transaction.coin_from.network" readonly="">
+							<div class="transaction__block-input-copy transaction__block-input-copy-val">
+								Network
+							</div>
+						</div>
+						<div class="transaction__block-input-wrapper">
+							<div class="transaction__block-input-img">
+								<img src="/images/coin.svg" alt="coin">
+							</div>
 							<input class="transaction__block-input" type="text" :value="transaction.amountFrom + ' ' + (transaction.coin_from.symbol).toUpperCase()" readonly="">
 							<div class="transaction__block-input-copy transaction__block-input-copy-val" @click="clipcopy(transaction.amountFrom)">
 								Click to copy
