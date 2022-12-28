@@ -24,9 +24,9 @@
 							<!-- <li class="header__item">
 								<a class="header__link" href="#transactions" click="closeMenu">Transactions</a>
 							</li>  -->
-							<li class="header__item">
+							<!-- <li class="header__item">
 								<a class="header__link" href="#support" click="closeMenu">Support</a>
-							</li>
+							</li> -->
 						</ul>
 					</nav>
 

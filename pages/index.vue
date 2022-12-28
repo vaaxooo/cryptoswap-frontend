@@ -180,7 +180,7 @@
 		</section>
 
 
-		<section class="support" id="support">
+		<!-- <section class="support" id="support">
 			<div class="container support__container">
 				<div class="support__logo">
 					CryptoSwap.cz
@@ -196,7 +196,7 @@
 					Open chat
 				</a>
 			</div>
-		</section>
+		</section> -->
 
 		<layouts-footer />
 	</div>

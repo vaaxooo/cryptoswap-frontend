@@ -7,9 +7,9 @@
 					ALL RIGHTS RESERVED © 2022            </div>
 			</div>
 			<div class="footer__end">
-				<a class="footer__link" href="https://telegram.me/CzSwapSupport">
+				<!-- <a class="footer__link" href="https://telegram.me/CzSwapSupport">
 					<img src="/images/tg(1).svg" alt="tg">
-				</a>
+				</a> -->
 			</div>
 		</div>
 	</footer>
