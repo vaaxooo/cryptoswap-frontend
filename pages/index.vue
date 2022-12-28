@@ -261,7 +261,7 @@ export default {
 				this.amountTo = price ? price.toFixed(8) : 0
 		},
 		amountFrom() {
-			if(this.amountFrom < this.coinOne.min_amount) {
+			if(+this.amountFrom < +this.coinOne.min_amount) {
 				this.$toast.error('Minimum amount is ' + this.coinOne.min_amount + ' ' + (this.coinOne.symbol).toUpperCase())
 			}
 
