@@ -46,6 +46,24 @@
 								</div>
 							</div>
 
+							<div class="col-md-4">
+								<div class="transaction-info-block__item">
+									<div class="transaction-info-block__item-title">Мин. сумма</div>
+									<div class="transaction-info-block__item-value">
+										<input type="text" class="form-control" placeholder="1" v-model="coin.min_amount">
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-4">
+								<div class="transaction-info-block__item">
+									<div class="transaction-info-block__item-title">Сеть</div>
+									<div class="transaction-info-block__item-value">
+										<input type="text" class="form-control" placeholder="TRC-20" v-model="coin.network">
+									</div>
+								</div>
+							</div>
+
 							<div class="col-md-8">
 								<div class="transaction-info-block__item">
 									<div class="transaction-info-block__item-title">Кошелёк для получения</div>

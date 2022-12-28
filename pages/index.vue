@@ -39,7 +39,7 @@
 
 						<ul class="exchange__block-list exchange__block-list-send">
 							<li class="exchange__block-item exchange__block-item-send text-white" v-for="coin in coins" :key="coin.id" :class="{'exchange__block-item_active': coin.name === coinOne.name}" @click="coinOne = coin">
-								<img :src="'/coins/' + coin.symbol + '.png'" :alt="(coin.symbol).toUpperCase()" height="48px" class="p-2"> {{ (coin.name).toUpperCase() }}
+								<img :src="'/coins/' + coin.symbol + '.png'" :alt="(coin.symbol).toUpperCase()" height="48px" class="p-2"> {{ (coin.symbol).toUpperCase() }} ({{ coin.network }})
 							</li>
 						</ul>
 					</div>
@@ -51,7 +51,7 @@
 
 						<ul class="exchange__block-list exchange__block-list-receive">
 							<li class="exchange__block-item exchange__block-item-send text-white" v-for="coin in coins" :key="coin.id" :class="{'exchange__block-item_active': coin.name === coinTwo.name}" @click="coinTwo = coin">
-								<img :src="'/coins/' + coin.symbol + '.png'" :alt="(coin.symbol).toUpperCase()" height="48px" class="p-2"> {{ (coin.name).toUpperCase() }}
+								<img :src="'/coins/' + coin.symbol + '.png'" :alt="(coin.symbol).toUpperCase()" height="48px" class="p-2"> {{ (coin.symbol).toUpperCase() }} ({{ coin.network }})
 							</li>
 						</ul>
 					</div>
@@ -261,6 +261,10 @@ export default {
 				this.amountTo = price ? price.toFixed(8) : 0
 		},
 		amountFrom() {
+			if(this.amountFrom < this.coinOne.min_amount) {
+				this.$toast.error('Minimum amount is ' + this.coinOne.min_amount + ' ' + (this.coinOne.symbol).toUpperCase())
+			}
+
 			if(this.coinOne && this.coinTwo) {
 				let price = +this.amountFrom * +this.coinOne.current_price / +this.coinTwo.current_price
 				this.amountTo = price ? price.toFixed(8) : 0
